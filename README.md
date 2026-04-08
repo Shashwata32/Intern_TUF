@@ -3,8 +3,6 @@
 A beautifully crafted interactive calendar component built with **React**, **TypeScript**, and **Tailwind CSS**.  
 Designed specifically for developers and competitive programmers, this calendar emulates a physical wall calendar where each month focuses on a different **Data Structure or Algorithm (DSA)** topic. It features topic-specific hero images, intuitive date range selection, persistent problem-tracking notes, and smooth swipe animations.
 
-![Calendar Demo](https://via.placeholder.com/800x400?text=Interactive+DSA+Calendar+Demo)
-
 ---
 
 ## ✨ Features
