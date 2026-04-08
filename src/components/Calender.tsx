@@ -7,18 +7,18 @@ import HeroImage from './HeroImage';
 
 // Theme background images (subtle, low opacity)
 const monthBackgrounds = [
-  { image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a6?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1470071459604-3b5ec3f7a73f?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1566410822511-4e69f5b4acd2?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1506368249639-73a05a6d6484?w=1600&h=900&fit=crop", opacity: 0.9 },
-  { image: "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=1600&h=900&fit=crop", opacity: 0.9 },
+  { image: "../assets/bg/Array.png", opacity: 0.9 },
+  { image: "../assets/bg/2pointers.png", opacity: 0.9 },
+  { image: "../assets/bg/SlidingWindow.png", opacity: 0.9 },
+  { image: "../assets/bg/BinarySearch.png", opacity: 0.9 },
+  { image: "../assets/bg/Stack.png", opacity: 0.9 },
+  { image: "../assets/bg/LinkedList.png", opacity: 0.9 },
+  { image: "../assets/bg/Tree.png", opacity: 0.9 },
+  { image: "../assets/bg/Bit.png", opacity: 0.9 },
+  { image: "../assets/bg/Heap.png", opacity: 0.9 },
+  { image: "../assets/bg/Trie.png", opacity: 0.9 },
+  { image: "../assets/bg/DynammicProgramming.png", opacity: 0.9 },
+  { image: "../assets/bg/Graph.png", opacity: 0.9 },
 ];
 
 export default function Calendar() {
