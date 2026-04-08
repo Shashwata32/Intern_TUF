@@ -6,18 +6,18 @@ interface HeroImageProps {
 
 export default function HeroImage({ currentMonth }: HeroImageProps) {
   const seasonalImages = [
-    { month: 0, url: "../public/assets/Array.png"},
-    { month: 1, url: "../public/assets/2pointers.png"},
-    { month: 2, url: "../public/assets/SlidingWindow.png"},
-    { month: 3, url: "../public/assets/BinarySearch.png"},
-    { month: 4, url: "../public/assets/Stack.png"},
-    { month: 5, url: "../public/assets/LinkedList.png"},
-    { month: 6, url: "../public/assets/Tree.png"},
-    { month: 7, url: "../public/assets/Bit.png"},
-    { month: 8, url: "../public/assets/Heap.png"},
-    { month: 9, url: "../public/assets/Trie.png"},
-    { month: 10, url: "../public/assets/DynammicProgramming.png" },
-    { month: 11, url: "../public/assets/Graph.png"},
+    { month: 0, url: "../assets/Array.png"},
+    { month: 1, url: "../assets/2pointers.png"},
+    { month: 2, url: "../assets/SlidingWindow.png"},
+    { month: 3, url: "../assets/BinarySearch.png"},
+    { month: 4, url: "../assets/Stack.png"},
+    { month: 5, url: "../assets/LinkedList.png"},
+    { month: 6, url: "../assets/Tree.png"},
+    { month: 7, url: "../assets/Bit.png"},
+    { month: 8, url: "../assets/Heap.png"},
+    { month: 9, url: "../assets/Trie.png"},
+    { month: 10, url: "../assets/DynammicProgramming.png" },
+    { month: 11, url: "../assets/Graph.png"},
   ];
 
 
