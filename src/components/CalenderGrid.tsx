@@ -1,4 +1,3 @@
-// src/components/CalendarGrid.tsx
 import { isDateInRange } from '../utils/calenderHelpers';
 import { isSameDay } from 'date-fns';
 
