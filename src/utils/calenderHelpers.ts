@@ -23,15 +23,23 @@ export interface CalendarDay {
 // Common holidays (month-day mapping as strings)
 const HOLIDAYS: Record<string, string> = {
   '1-1': "New Year's Day",
-  '2-14': "Valentine's Day",
-  '3-17': "St. Patrick's Day",
-  '4-1': "April Fools Day",
-  '5-1': "May Day",
-  '7-4': "Independence Day",
-  '10-31': "Halloween",
-  '11-11': "Veterans Day",
-  '12-25': "Christmas Day",
-  '12-31': "New Year's Eve"
+  '1-26': "Republic Day",
+  '3-8': "International Women's Day",
+  '3-29': "Holi (Dates may vary)",
+  '4-10': "Mahavir Jayanti (Dates may vary)",
+  '4-14': "Ambedkar Jayanti",
+  '4-21': "Ram Navami (Dates may vary)",
+  '5-1': "Labour Day",
+  '6-17': "Eid al-Adha (Bakrid) (Dates may vary)",
+  '7-17': "Muharram (Dates may vary)",
+  '8-15': "Independence Day",
+  '8-19': "Raksha Bandhan (Dates may vary)",
+  '8-26': "Janmashtami (Dates may vary)",
+  '10-2': "Gandhi Jayanti",
+  '10-12': "Dussehra (Dates may vary)",
+  '11-1': "Diwali (Dates may vary)",
+  '11-15': "Guru Nanak Jayanti (Dates may vary)",
+  '12-25': "Christmas Day"
 };
 
 export function getHolidayName(date: Date): string | undefined {
@@ -42,8 +50,9 @@ export function getHolidayName(date: Date): string | undefined {
 export function generateMonthDays(currentDate: Date): CalendarDay[] {
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(currentDate);
-  const calendarStart = startOfWeek(monthStart, { weekStartsOn: 0 });
-  const calendarEnd = endOfWeek(monthEnd, { weekStartsOn: 0 });
+  
+  const calendarStart = startOfWeek(monthStart, { weekStartsOn: 1 });
+  const calendarEnd = endOfWeek(monthEnd, { weekStartsOn: 1 });
   
   const days = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
   

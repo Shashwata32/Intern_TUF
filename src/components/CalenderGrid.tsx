@@ -1,5 +1,6 @@
+// src/components/CalenderGrid.tsx
 import { isDateInRange } from '../utils/calenderHelpers';
-import { isSameDay } from 'date-fns';
+import { isSameDay, isWeekend } from 'date-fns'; // Added isWeekend
 
 interface CalendarDay {
   date: Date;
@@ -17,29 +18,35 @@ interface CalendarGridProps {
 }
 
 export default function CalendarGrid({ days, startDate, endDate, onDateClick }: CalendarGridProps) {
-  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  // Changed to start on Monday
+  const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   
   const getDateStyles = (day: CalendarDay) => {
     let styles = 'day-cell';
     
     if (!day.isCurrentMonth) {
-      styles += ' other-month';  // Added space before class
+      styles += ' other-month';
     }
     
     if (day.isToday) {
-      styles += ' today';        // Added space
+      styles += ' today';
     }
     
     if (startDate && isSameDay(day.date, startDate)) {
-      styles += ' start-date';   // Added space
+      styles += ' start-date';
     }
     
     if (endDate && isSameDay(day.date, endDate)) {
-      styles += ' end-date';     // Added space
+      styles += ' end-date';
     }
     
     if (startDate && endDate && isDateInRange(day.date, startDate, endDate)) {
-      styles += ' in-range';     // Added space
+      styles += ' in-range';
+    }
+
+    // NEW: Make weekends and holidays red
+    if (day.isCurrentMonth && (isWeekend(day.date) || day.holidayName)) {
+        styles += ' !text-red-500 font-bold'; 
     }
     
     return styles;
@@ -48,8 +55,12 @@ export default function CalendarGrid({ days, startDate, endDate, onDateClick }: 
   return (
     <div>
       <div className="calendar-grid mb-2">
-        {weekDays.map(day => (
-          <div key={day} className="text-center text-sm font-semibold text-stone-500 py-2">
+        {weekDays.map((day, i) => (
+          <div 
+            key={day} 
+            // Highlight 'Sat' and 'Sun' (indices 5 and 6) in the header
+            className={`text-center text-sm font-semibold py-2 ${i >= 5 ? 'text-red-500' : 'text-stone-500'}`}
+          >
             {day}
           </div>
         ))}
@@ -63,12 +74,10 @@ export default function CalendarGrid({ days, startDate, endDate, onDateClick }: 
             className={getDateStyles(day)}
             disabled={!day.isCurrentMonth}
           >
-            <span className={`text-sm font-medium ${!day.isCurrentMonth ? 'text-stone-300' : 'text-stone-700'}`}>
+            <span className="text-sm">
               {day.dayOfMonth}
             </span>
-            {day.holidayName && day.isCurrentMonth && (
-              <span className="holiday-marker">🎉</span>
-            )}
+            {/* The emoji marker has been removed entirely */}
           </button>
         ))}
       </div>

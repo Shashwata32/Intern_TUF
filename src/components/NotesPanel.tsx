@@ -1,16 +1,25 @@
 import { useState, useEffect } from 'react';
 import { getNoteContext } from '../utils/calenderHelpers';
+import { isSameDay } from 'date-fns';
+
+// Added CalendarDay interface to type the days prop properly
+interface CalendarDay {
+  date: Date;
+  holidayName?: string;
+  [key: string]: any;
+}
 
 interface NotesPanelProps {
   startDate: Date | null;
   endDate: Date | null;
   currentMonth: Date;
+  days: CalendarDay[]; // NEW: Accept days array from parent
   onSave: (key: string, note: string) => void;
   loadNote: (key: string) => string | null;
   onSelectionChange: () => void;
 }
 
-export default function NotesPanel({ startDate, endDate, currentMonth, onSave, loadNote, onSelectionChange }: NotesPanelProps) {
+export default function NotesPanel({ startDate, endDate, currentMonth, days, onSave, loadNote, onSelectionChange }: NotesPanelProps) {
   const [noteText, setNoteText] = useState('');
   const [context, setContext] = useState({ key: '', label: '' });
   const [isSaved, setIsSaved] = useState(false);
@@ -36,6 +45,10 @@ export default function NotesPanel({ startDate, endDate, currentMonth, onSave, l
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 2000);
   };
+
+  // Safely find the selected day to check if it's a holiday
+  const selectedDayData = days.find(d => startDate && isSameDay(d.date, startDate));
+  const holidayReason = selectedDayData?.holidayName;
   
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-5 border border-stone-200">
@@ -52,6 +65,13 @@ export default function NotesPanel({ startDate, endDate, currentMonth, onSave, l
       <div className="mb-3">
         <p className="text-xs text-stone-500 bg-stone-50 p-2 rounded-md">{context.label}</p>
       </div>
+
+      {/* NEW: Read-only un-deletable holiday banner */}
+      {holidayReason && (
+        <div className="mb-3 p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm font-medium">
+          Holiday: {holidayReason}
+        </div>
+      )}
       
       <textarea
         value={noteText}

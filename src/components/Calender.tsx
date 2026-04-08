@@ -180,6 +180,7 @@ export default function Calendar() {
                     startDate={startDate}
                     endDate={endDate}
                     currentMonth={currentMonth}
+                    days={days}
                     onSave={saveNote}
                     loadNote={loadNote}
                     onSelectionChange={() => {}}
