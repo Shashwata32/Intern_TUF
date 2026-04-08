@@ -70,9 +70,6 @@ export default function NotesPanel({ startDate, endDate, currentMonth, onSave, l
         </button>
       </div>
       
-      <div className="mt-3 text-xs text-stone-400 border-t border-stone-100 pt-2">
-        💡 Notes persist in your browser for each selection
-      </div>
     </div>
   );
 }
