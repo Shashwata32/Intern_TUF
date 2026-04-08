@@ -41,7 +41,6 @@
   }
 }
 
-/* Update your existing keyframes and animation classes in src/index.css */
 
 .calendar-flip {
   /* Using 1.5s for the entire swipe transition */
@@ -67,7 +66,6 @@
     opacity: 0;
   }
   50% {
-    /* Instantly teleport the container to the right side off-screen when the new month dates are loaded */
     transform: translateX(120%);
     opacity: 0;
   }
@@ -88,7 +86,6 @@
     opacity: 0;
   }
   50% {
-    /* Instantly teleport the container to the left side off-screen when the old month dates are loaded */
     transform: translateX(-120%);
     opacity: 0;
   }
@@ -109,7 +106,6 @@
   /* font-size: 2rem; */
 }
 
-/* Update Grid to be fluid instead of fixed minimums */
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -128,7 +124,6 @@
   transition: all 0.2s;
 }
 
-/* Move flip zones to the top corners on mobile so they don't block the Notes panel */
 @media (max-width: 768px) {
   .page-flip-zone {
     width: 70px;

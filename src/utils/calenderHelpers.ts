@@ -1,4 +1,3 @@
-// src/utils/calendarHelpers.ts
 import {
   startOfMonth,
   endOfMonth,

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { getNoteContext } from '../utils/calenderHelpers';
 import { isSameDay } from 'date-fns';
 
-// Added CalendarDay interface to type the days prop properly
 interface CalendarDay {
   date: Date;
   holidayName?: string;
@@ -66,7 +65,7 @@ export default function NotesPanel({ startDate, endDate, currentMonth, days, onS
         <p className="text-xs text-stone-500 bg-stone-50 p-2 rounded-md">{context.label}</p>
       </div>
 
-      {/* NEW: Read-only un-deletable holiday banner */}
+      {/* Read-only un-deletable holiday banner */}
       {holidayReason && (
         <div className="mb-3 p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm font-medium">
           Holiday: {holidayReason}
