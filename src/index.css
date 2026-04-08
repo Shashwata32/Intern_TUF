@@ -41,45 +41,59 @@
   }
 }
 
-/* Flip animation for the calendar grid */
+/* Update your existing keyframes and animation classes in src/index.css */
+
 .calendar-flip {
-  transition: transform 0.3s ease-in-out, opacity 0.2s ease;
+  /* Using 1.5s for the entire swipe transition */
+  transition: transform 1.5s ease-in-out, opacity 1.5s ease;
 }
 
 .calendar-flip.flipping-prev {
-  animation: flipPrev 0.3s ease-in-out;
+  animation: swipePrev 1.5s ease-in-out forwards;
 }
 
 .calendar-flip.flipping-next {
-  animation: flipNext 0.3s ease-in-out;
+  animation: swipeNext 1.5s ease-in-out forwards;
 }
 
-@keyframes flipPrev {
+/* Next month: Current exits Left, New enters from Right */
+@keyframes swipeNext {
   0% {
-    transform: rotateY(0deg);
+    transform: translateX(0);
     opacity: 1;
   }
+  49% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
   50% {
-    transform: rotateY(90deg);
-    opacity: 0.5;
+    /* Instantly teleport the container to the right side off-screen when the new month dates are loaded */
+    transform: translateX(120%);
+    opacity: 0;
   }
   100% {
-    transform: rotateY(0deg);
+    transform: translateX(0);
     opacity: 1;
   }
 }
 
-@keyframes flipNext {
+/* Prev month: Current exits Right, New enters from Left */
+@keyframes swipePrev {
   0% {
-    transform: rotateY(0deg);
+    transform: translateX(0);
     opacity: 1;
   }
+  49% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
   50% {
-    transform: rotateY(-90deg);
-    opacity: 0.5;
+    /* Instantly teleport the container to the left side off-screen when the old month dates are loaded */
+    transform: translateX(-120%);
+    opacity: 0;
   }
   100% {
-    transform: rotateY(0deg);
+    transform: translateX(0);
     opacity: 1;
   }
 }

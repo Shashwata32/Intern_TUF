@@ -1,4 +1,3 @@
-// src/components/Calendar.tsx
 import { useState, useEffect, useCallback } from 'react';
 import { addMonths, subMonths, isSameDay, format } from 'date-fns';
 import { generateMonthDays } from '../utils/calenderHelpers';
@@ -24,13 +23,14 @@ const monthBackgrounds = [
 
 export default function Calendar() {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [bgMonth, setBgMonth] = useState(new Date()); // Controls background instantly
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [days, setDays] = useState(() => generateMonthDays(currentMonth));
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipDirection, setFlipDirection] = useState<'next' | 'prev' | null>(null);
   
-  const monthIndex = currentMonth.getMonth();
+  const monthIndex = bgMonth.getMonth();
   const currentBg = monthBackgrounds[monthIndex];
 
   useEffect(() => {
@@ -78,50 +78,45 @@ export default function Calendar() {
 
   const goPrevMonth = () => {
     if (isFlipping) return;
+    const prevMonth = subMonths(currentMonth, 1);
+    
+    setBgMonth(prevMonth);
     setFlipDirection('prev');
     setIsFlipping(true);
+    
     setTimeout(() => {
-      setCurrentMonth(prev => subMonths(prev, 1));
+      setCurrentMonth(prevMonth);
       clearSelection();
+    }, 750); 
+
+    setTimeout(() => {
       setIsFlipping(false);
       setFlipDirection(null);
-    }, 300);
+    }, 1500); 
   };
 
   const goNextMonth = () => {
     if (isFlipping) return;
+    const nextMonth = addMonths(currentMonth, 1);
+    
+    setBgMonth(nextMonth);
     setFlipDirection('next');
     setIsFlipping(true);
+    
     setTimeout(() => {
-      setCurrentMonth(prev => addMonths(prev, 1));
+      setCurrentMonth(nextMonth);
       clearSelection();
+    }, 750); 
+    
+    setTimeout(() => {
       setIsFlipping(false);
       setFlipDirection(null);
-    }, 300);
-  };
-
-  const goToToday = () => {
-    if (isFlipping) return;
-    setCurrentMonth(new Date());
-    clearSelection();
-  };
-
-  const getSelectionText = () => {
-    if (startDate && endDate) {
-      if (isSameDay(startDate, endDate)) {
-        return `Selected: ${format(startDate, 'MMMM d, yyyy')}`;
-      }
-      return `Selected: ${format(startDate, 'MMM d')} - ${format(endDate, 'MMM d, yyyy')}`;
-    }
-    if (startDate && !endDate) {
-      return `Selected start: ${format(startDate, 'MMMM d, yyyy')} (click end date)`;
-    }
-    return 'No dates selected';
+    }, 1500); 
   };
 
   return (
     <div className="min-h-screen p-4 md:p-12 relative overflow-hidden flex items-center justify-center">
-      {/* Background elements */}
+      {/* Background elements (these stay fixed and fade instantly) */}
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700"
         style={{ backgroundImage: `url(${currentBg.image})`, opacity: currentBg.opacity }}
@@ -131,67 +126,68 @@ export default function Calendar() {
 
       {/* Main Container */}
       <div className="max-w-4xl w-full mx-auto relative z-10 mt-8">
+        
+        {/* Click zones stay fixed so they don't swipe away */}
         <div className="page-flip-zone top-left" onClick={goPrevMonth} />
         <div className="page-flip-zone bottom-right" onClick={goNextMonth} />
 
-        {/* Wall Calendar Card */}
-        <div className="bg-white rounded-2xl shadow-2xl relative border border-stone-200">
+        {/* 1.5s Swipe Container wrapping the ENTIRE Wall Calendar Card */}
+        <div className={`calendar-flip ${isFlipping ? `flipping-${flipDirection}` : ''}`}>
           
-          {/* Realistic Spiral Binding Effect */}
-          <div className="absolute -top-4 left-0 right-0 flex justify-evenly px-6 z-30 pointer-events-none">
-            {[...Array(24)].map((_, i) => (
-              <div key={`spiral-${i}`} className="relative">
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-stone-900 shadow-inner" />
-                <div className="w-3 h-10 rounded-full bg-gradient-to-b from-stone-300 via-stone-100 to-stone-400 shadow-[0_2px_4px_rgba(0,0,0,0.3)] border border-stone-400/50" />
-              </div>
-            ))}
-          </div>
-
-          {/* Hero Image */}
-          <HeroImage currentMonth={currentMonth} />
-
-          {/* Rest of the UI (Padded) */}
-          <div className="p-6 md:p-8">
-
-            {/* Status & Controls Bar */}
-            <div className="fontchange flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-6">
-              
-              <div className="flex flex-col items-start gap-2">
-                <h2 className="text-3xl font-bold text-stone-800 tracking-tight">
-                  {format(currentMonth, 'MMMM yyyy')}
-                </h2>
-                {/* <div className="text-sm font-medium text-stone-500 bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-100">
-                  {getSelectionText()}
-                </div> */}
-              </div>
-
-              {/* Current Day Display (Replaces Buttons) */}
-              <div className="flex flex-col text-3xl sm:items-end">
-                <span className="font-bold">
-                  {format(new Date(), 'EEEE')}
-                </span>
-              </div>
+          <div className="bg-white rounded-2xl shadow-2xl relative border border-stone-200 overflow-hidden">
+            
+            {/* Realistic Spiral Binding Effect */}
+            <div className="absolute -top-4 left-0 right-0 flex justify-evenly px-6 z-30 pointer-events-none">
+              {[...Array(24)].map((_, i) => (
+                <div key={`spiral-${i}`} className="relative">
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-stone-900 shadow-inner" />
+                  <div className="w-3 h-10 rounded-full bg-gradient-to-b from-stone-300 via-stone-100 to-stone-400 shadow-[0_2px_4px_rgba(0,0,0,0.3)] border border-stone-400/50" />
+                </div>
+              ))}
             </div>
 
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="md:w-55/100">
-                <div className={`calendar-flip ${isFlipping ? `flipping-${flipDirection}` : ''}`}>
-                  <CalendarGrid days={days} startDate={startDate} endDate={endDate} onDateClick={handleDateClick} />
+            {/* Hero Image */}
+            <HeroImage currentMonth={currentMonth} />
+
+            {/* Rest of the UI (Padded) */}
+            <div className="p-6 md:p-8">
+
+              {/* Status & Controls Bar */}
+              <div className="fontchange flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-6">
+                
+                <div className="flex flex-col items-start gap-2">
+                  <h2 className="text-3xl font-bold text-stone-800 tracking-tight">
+                    {format(currentMonth, 'MMMM yyyy')}
+                  </h2>
+                </div>
+
+                {/* Current Day Display */}
+                <div className="flex flex-col text-3xl sm:items-end">
+                  <span className="font-bold">
+                    {format(new Date(), 'EEEE')}
+                  </span>
                 </div>
               </div>
-              <div className="md:w-45/100">
-                <NotesPanel
-                  startDate={startDate}
-                  endDate={endDate}
-                  currentMonth={currentMonth}
-                  onSave={saveNote}
-                  loadNote={loadNote}
-                  onSelectionChange={() => {}}
-                />
+
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="md:w-55/100">
+                  {/* Grid is no longer the ONLY thing swiping */}
+                  <CalendarGrid days={days} startDate={startDate} endDate={endDate} onDateClick={handleDateClick} />
+                </div>
+                <div className="md:w-45/100">
+                  <NotesPanel
+                    startDate={startDate}
+                    endDate={endDate}
+                    currentMonth={currentMonth}
+                    onSave={saveNote}
+                    loadNote={loadNote}
+                    onSelectionChange={() => {}}
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </div>
