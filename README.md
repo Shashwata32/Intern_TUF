@@ -19,11 +19,11 @@ Designed specifically for developers and competitive programmers, this calendar 
 - **Fully Responsive** – Works flawlessly on desktop, tablet, and mobile. Desktop uses a side-by-side calendar + notes layout; mobile stacks vertically.
 
 ### Creative Enhancements
-- 🖼️ **DSA Topic Hero Images** – The hero image changes each month to represent a different DSA topic (e.g., Arrays, Pointers, Binary Search, Trees, Graphs, Dynamic Programming) to keep your learning themed and focused.
-- 📖 **Smooth Swipe Navigation** – Tap the **top-left corner** to go to the previous month, or the **bottom-right corner** to go to the next month. Features a custom 1.5s sliding animation where the calendar sweeps off-screen while the background transitions instantly.
-- 🌈 **Topic-Themed Backgrounds** – Each month features a subtle background corresponding to that month's DSA topic to set the mood without distracting from the dates.
-- 📌 **Today Indicator** – The current date is highlighted so you never lose track of your daily coding streak.
-- 💾 **Persistent Storage** – All your problem-solving notes and logs are saved locally; they survive browser refreshes and are instantly restored when you revisit the calendar.
+- **DSA Topic Hero Images** – The hero image changes each month to represent a different DSA topic (e.g., Arrays, Pointers, Binary Search, Trees, Graphs, Dynamic Programming) to keep your learning themed and focused.
+- **Smooth Swipe Navigation** – Tap the **top-left corner** to go to the previous month, or the **bottom-right corner** to go to the next month. Features a custom 1.5s sliding animation where the calendar sweeps off-screen while the background transitions instantly.
+- **Topic-Themed Backgrounds** – Each month features a subtle background corresponding to that month's DSA topic to set the mood without distracting from the dates.
+- **Today Indicator** – The current date is highlighted so you never lose track of your daily coding streak.
+- **Persistent Storage** – All your problem-solving notes and logs are saved locally; they survive browser refreshes and are instantly restored when you revisit the calendar.
 
 ---
 
@@ -43,7 +43,7 @@ Designed specifically for developers and competitive programmers, this calendar 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ and npm / yarn / pnpm
+- Node.js 18+ and npm
 
 ### Installation
 
@@ -53,5 +53,6 @@ Designed specifically for developers and competitive programmers, this calendar 
    cd Intern_TUF
 
 2. **Install dependencies and start server**
+ ```bash
 npm install
 npm run dev
