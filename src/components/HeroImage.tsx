@@ -29,17 +29,18 @@ export default function HeroImage({ currentMonth }: HeroImageProps) {
   const image = seasonalImages.find(img => img.month === currentMonth.getMonth()) || defaultImage;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl shadow-xl border-4 border-white/50 bg-white">
-      <div className="relative h-64 md:h-80 w-full">
+    <div className="relative w-full -mb-6 md:-mb-10 drop-shadow-md z-10">
+      {/* Main Hero Photo (Foreground Layer) with full chevron cut */}
+      <div 
+        className="relative h-64 md:h-[22rem] w-full rounded-t-2xl overflow-hidden"
+        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%)' }}
+      >
         <img
           src={image.url}
           alt={image.alt}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
-        <div className="absolute bottom-4 left-4 text-white text-xl md:text-2xl font-bold bg-black/40 px-4 py-2 rounded-lg backdrop-blur-md shadow-lg">
-          {format(currentMonth, 'MMMM yyyy')}
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10" />
       </div>
     </div>
   );

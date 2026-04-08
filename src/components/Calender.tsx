@@ -120,59 +120,67 @@ export default function Calendar() {
   };
 
   return (
-    <div className="min-h-screen p-4 md:p-8 relative overflow-hidden">
-      {/* Thematic background image */}
+    <div className="min-h-screen p-4 md:p-12 relative overflow-hidden flex items-center justify-center">
+      {/* Background elements */}
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700"
-        style={{ 
-          backgroundImage: `url(${currentBg.image})`,
-          opacity: currentBg.opacity,
-        }}
+        style={{ backgroundImage: `url(${currentBg.image})`, opacity: currentBg.opacity }}
       />
       <div className="fixed inset-0 bg-stone-100 -z-10" />
       <div className="fixed inset-0 bg-white/30 backdrop-blur-[1px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Page-flipping zones */}
+      {/* Main Container */}
+      <div className="max-w-4xl w-full mx-auto relative z-10 mt-8">
         <div className="page-flip-zone top-left" onClick={goPrevMonth} />
         <div className="page-flip-zone bottom-right" onClick={goNextMonth} />
 
-        {/* Wall Calendar Card - Rectangular shape */}
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-stone-200 transition-all duration-300">
-          {/* Spiral binding effect at top */}
-          <div className="h-3 " />
+        {/* Wall Calendar Card */}
+        <div className="bg-white rounded-2xl shadow-2xl relative border border-stone-200">
           
-          <div className="p-6 md:p-8">
-            {/* Hero Image - Prominent at top */}
-            <div className="mb-6">
-              <HeroImage currentMonth={currentMonth} />
-            </div>
+          {/* Realistic Spiral Binding Effect */}
+          <div className="absolute -top-4 left-0 right-0 flex justify-evenly px-6 z-30 pointer-events-none">
+            {[...Array(24)].map((_, i) => (
+              <div key={`spiral-${i}`} className="relative">
+                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-stone-900 shadow-inner" />
+                <div className="w-3 h-10 rounded-full bg-gradient-to-b from-stone-300 via-stone-100 to-stone-400 shadow-[0_2px_4px_rgba(0,0,0,0.3)] border border-stone-400/50" />
+              </div>
+            ))}
+          </div>
 
-            {/* Month Title & Navigation */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-              <div>
-                <h2 className="text-3xl font-bold text-stone-800">
+          {/* Hero Image */}
+          <HeroImage currentMonth={currentMonth} />
+
+          {/* Rest of the UI (Padded) */}
+          <div className="p-6 md:p-8 pt-0">
+            
+            {/* Status & Controls Bar */}
+            {/* Status & Controls Bar */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-6">
+              
+              <div className="flex flex-col items-start gap-2">
+                <h2 className="text-3xl font-bold text-stone-800 tracking-tight">
                   {format(currentMonth, 'MMMM yyyy')}
                 </h2>
-                <p className="text-sm text-stone-500 mt-1">{getSelectionText()}</p>
+                {/* <div className="text-sm font-medium text-stone-500 bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-100">
+                  {getSelectionText()}
+                </div> */}
               </div>
-              <div className="flex gap-2">
-                <button onClick={goToToday} className="px-3 py-1.5 text-sm bg-stone-100 text-stone-600 rounded-lg hover:bg-stone-200">Today</button>
-                <button onClick={clearSelection} className="px-3 py-1.5 text-sm bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100">Clear</button>
+
+              {/* Current Day Display (Replaces Buttons) */}
+              <div className="flex flex-col sm:items-end px-4 py-2 rounded-xl ">
+                <span className="text-base font-bold">
+                  {format(new Date(), 'EEEE')}
+                </span>
               </div>
             </div>
 
-            {/* Two-column layout: Calendar (left) + Notes (right) */}
             <div className="flex flex-col md:flex-row gap-8">
-              {/* Calendar Grid */}
-              <div className="md:w-2/3">
+              <div className="md:w-55/100">
                 <div className={`calendar-flip ${isFlipping ? `flipping-${flipDirection}` : ''}`}>
                   <CalendarGrid days={days} startDate={startDate} endDate={endDate} onDateClick={handleDateClick} />
                 </div>
               </div>
-
-              {/* Notes Panel - Side panel like a tear-off pad */}
-              <div className="md:w-1/3">
+              <div className="md:w-45/100">
                 <NotesPanel
                   startDate={startDate}
                   endDate={endDate}
@@ -185,12 +193,12 @@ export default function Calendar() {
             </div>
 
             {/* Legend */}
-            <div className="mt-8 pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-xs text-stone-500">
+            {/* <div className="border-t border-stone-100 flex flex-wrap gap-4 text-xs text-stone-500">
               <div className="flex items-center gap-1"><div className="w-4 h-4 bg-indigo-600 rounded"></div><span>Start/End Date</span></div>
               <div className="flex items-center gap-1"><div className="w-4 h-4 bg-indigo-100 rounded"></div><span>Selected Range</span></div>
               <div className="flex items-center gap-1"><div className="w-4 h-4 border-2 border-amber-400 rounded"></div><span>Today</span></div>
               <div className="flex items-center gap-1"><span>🎉</span><span>Holiday</span></div>
-            </div>
+            </div> */}
           </div>
 
         </div>
