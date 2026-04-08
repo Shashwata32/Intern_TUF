@@ -20,7 +20,10 @@ Designed specifically for developers and competitive programmers, this calendar 
 
 ### Creative Enhancements
 - **DSA Topic Hero Images** – The hero image changes each month to represent a different DSA topic (e.g., Arrays, Pointers, Binary Search, Trees, Graphs, Dynamic Programming) to keep your learning themed and focused.
-- **Smooth Swipe Navigation** – Tap the **top-left corner** to go to the previous month, or the **bottom-right corner** to go to the next month. Features a custom 1.5s sliding animation where the calendar sweeps off-screen while the background transitions instantly.
+- **Smooth Swipe Navigation** – 
+  - For Desktop : Tap the **top-left corner** to go to the previous month, or the **bottom-right corner** to go to the next month. 
+  - For Mobile : Tap the **top-left corner** to go to the previous month, or the **top-right corner** to go to the next month.
+  - Features a custom 1.5s sliding animation where the calendar sweeps off-screen while the background transitions instantly.
 - **Topic-Themed Backgrounds** – Each month features a subtle background corresponding to that month's DSA topic to set the mood without distracting from the dates.
 - **Today Indicator** – The current date is highlighted so you never lose track of your daily coding streak.
 - **Persistent Storage** – All your problem-solving notes and logs are saved locally; they survive browser refreshes and are instantly restored when you revisit the calendar.

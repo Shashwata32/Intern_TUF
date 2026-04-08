@@ -1,4 +1,3 @@
-// src/components/HeroImage.tsx
 import { format } from 'date-fns';
 
 interface HeroImageProps {
@@ -28,14 +27,14 @@ export default function HeroImage({ currentMonth }: HeroImageProps) {
     <div className="relative w-full -mb-6 md:-mb-10 drop-shadow-md z-10">
       {/* Main Hero Photo (Foreground Layer) with full chevron cut */}
       <div 
-        className="relative h-64 md:h-[22rem] w-full rounded-t-2xl overflow-hidden"
+        className="relative h-64 md:h-88 w-full rounded-t-2xl overflow-hidden"
         style={{ clipPath: 'polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%)' }}
       >
         <img
           src={image.url}
           className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/10" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/10" />
       </div>
     </div>
   );

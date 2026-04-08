@@ -116,7 +116,7 @@ export default function Calendar() {
 
   return (
     // Changed min-h-screen to min-h-[100dvh], overflow-hidden to overflow-x-hidden, and added items-start for mobile scrolling
-    <div className="min-h-[100dvh] p-4 py-8 md:p-12 relative overflow-x-hidden flex items-start md:items-center justify-center">
+    <div className="min-h-dvh p-4 py-8 md:p-12 relative overflow-x-hidden flex items-start md:items-center justify-center">
       
       {/* Background elements */}
       <div 
@@ -142,14 +142,14 @@ export default function Calendar() {
               {[...Array(24)].map((_, i) => (
                 <div key={`spiral-${i}`} className="relative hidden sm:block">
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-stone-900 shadow-inner" />
-                  <div className="w-3 h-10 rounded-full bg-gradient-to-b from-stone-300 via-stone-100 to-stone-400 shadow-[0_2px_4px_rgba(0,0,0,0.3)] border border-stone-400/50" />
+                  <div className="w-3 h-10 rounded-full bg-linear-to-b from-stone-300 via-stone-100 to-stone-400 shadow-[0_2px_4px_rgba(0,0,0,0.3)] border border-stone-400/50" />
                 </div>
               ))}
               {/* Reduced spirals for mobile view */}
               {[...Array(12)].map((_, i) => (
                 <div key={`spiral-mob-${i}`} className="relative sm:hidden">
                   <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-stone-900 shadow-inner" />
-                  <div className="w-2 h-8 rounded-full bg-gradient-to-b from-stone-300 via-stone-100 to-stone-400 shadow-[0_2px_4px_rgba(0,0,0,0.3)] border border-stone-400/50" />
+                  <div className="w-2 h-8 rounded-full bg-linear-to-b from-stone-300 via-stone-100 to-stone-400 shadow-[0_2px_4px_rgba(0,0,0,0.3)] border border-stone-400/50" />
                 </div>
               ))}
             </div>

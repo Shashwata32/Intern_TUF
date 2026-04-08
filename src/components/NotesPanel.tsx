@@ -1,4 +1,3 @@
-// src/components/NotesPanel.jsx
 import { useState, useEffect } from 'react';
 import { getNoteContext } from '../utils/calenderHelpers';
 

@@ -109,7 +109,6 @@
   /* font-size: 2rem; */
 }
 
-/* Calendar grid custom classes (if you use them) */
 /* Update Grid to be fluid instead of fixed minimums */
 .calendar-grid {
   display: grid;
