@@ -36,7 +36,7 @@ export default function HeroImage({ currentMonth }: HeroImageProps) {
           alt={image.alt}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
         <div className="absolute bottom-3 left-3 text-white text-sm font-medium bg-black/30 px-2 py-1 rounded-md backdrop-blur-sm">
           {format(currentMonth, 'MMMM yyyy')}
         </div>
