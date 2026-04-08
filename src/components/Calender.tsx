@@ -151,11 +151,10 @@ export default function Calendar() {
           <HeroImage currentMonth={currentMonth} />
 
           {/* Rest of the UI (Padded) */}
-          <div className="p-6 md:p-8 pt-0">
-            
+          <div className="p-6 md:p-8">
+
             {/* Status & Controls Bar */}
-            {/* Status & Controls Bar */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-6">
+            <div className="fontchange flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-6">
               
               <div className="flex flex-col items-start gap-2">
                 <h2 className="text-3xl font-bold text-stone-800 tracking-tight">
@@ -167,8 +166,8 @@ export default function Calendar() {
               </div>
 
               {/* Current Day Display (Replaces Buttons) */}
-              <div className="flex flex-col sm:items-end px-4 py-2 rounded-xl ">
-                <span className="text-base font-bold">
+              <div className="flex flex-col text-3xl sm:items-end">
+                <span className="font-bold">
                   {format(new Date(), 'EEEE')}
                 </span>
               </div>
@@ -191,14 +190,6 @@ export default function Calendar() {
                 />
               </div>
             </div>
-
-            {/* Legend */}
-            {/* <div className="border-t border-stone-100 flex flex-wrap gap-4 text-xs text-stone-500">
-              <div className="flex items-center gap-1"><div className="w-4 h-4 bg-indigo-600 rounded"></div><span>Start/End Date</span></div>
-              <div className="flex items-center gap-1"><div className="w-4 h-4 bg-indigo-100 rounded"></div><span>Selected Range</span></div>
-              <div className="flex items-center gap-1"><div className="w-4 h-4 border-2 border-amber-400 rounded"></div><span>Today</span></div>
-              <div className="flex items-center gap-1"><span>🎉</span><span>Holiday</span></div>
-            </div> */}
           </div>
 
         </div>

@@ -1,10 +1,5 @@
-/* src/index.css - Full version */
-
-/* Tailwind CSS v4 import */
+@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
 @import "tailwindcss";
-
-/* ===== CUSTOM STYLES FOR CALENDAR ===== */
-
 /* Page-flipping click zones */
 .page-flip-zone {
   position: absolute;
@@ -93,6 +88,11 @@
 .prominent-image {
   margin-bottom: 1rem;
   filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+.fontchange {
+  font-family: 'Mystery Quest', cursive;
+  /* font-size: 2rem; */
 }
 
 /* Calendar grid custom classes (if you use them) */
