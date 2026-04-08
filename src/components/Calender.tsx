@@ -7,18 +7,18 @@ import HeroImage from './HeroImage';
 
 // Theme background images
 const monthBackgrounds = [
-  { image: "../assets/bg/Array.png", opacity: 0.9 },
-  { image: "../assets/bg/2pointers.png", opacity: 0.9 },
-  { image: "../assets/bg/SlidingWindow.png", opacity: 0.9 },
-  { image: "../assets/bg/BinarySearch.png", opacity: 0.9 },
-  { image: "../assets/bg/Stack.png", opacity: 0.9 },
-  { image: "../assets/bg/LinkedList.png", opacity: 0.9 },
-  { image: "../assets/bg/Tree.png", opacity: 0.9 },
-  { image: "../assets/bg/Bit.png", opacity: 0.9 },
-  { image: "../assets/bg/Heap.png", opacity: 0.9 },
-  { image: "../assets/bg/Trie.png", opacity: 0.9 },
-  { image: "../assets/bg/DynammicProgramming.png", opacity: 0.9 },
-  { image: "../assets/bg/Graph.png", opacity: 0.9 },
+  { image: "../public/assets/bg/Array.png", opacity: 0.9 },
+  { image: "../public/assets/bg/2pointers.png", opacity: 0.9 },
+  { image: "../public/assets/bg/SlidingWindow.png", opacity: 0.9 },
+  { image: "../public/assets/bg/BinarySearch.png", opacity: 0.9 },
+  { image: "../public/assets/bg/Stack.png", opacity: 0.9 },
+  { image: "../public/assets/bg/LinkedList.png", opacity: 0.9 },
+  { image: "../public/assets/bg/Tree.png", opacity: 0.9 },
+  { image: "../public/assets/bg/Bit.png", opacity: 0.9 },
+  { image: "../public/assets/bg/Heap.png", opacity: 0.9 },
+  { image: "../public/assets/bg/Trie.png", opacity: 0.9 },
+  { image: "../public/assets/bg/DynammicProgramming.png", opacity: 0.9 },
+  { image: "../public/assets/bg/Graph.png", opacity: 0.9 },
 ];
 
 export default function Calendar() {
