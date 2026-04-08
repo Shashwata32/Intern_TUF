@@ -110,21 +110,40 @@
 }
 
 /* Calendar grid custom classes (if you use them) */
+/* Update Grid to be fluid instead of fixed minimums */
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 4rem));
+  grid-template-columns: repeat(7, 1fr);
   gap: 0.25rem;
+  width: 100%;
 }
 
 .day-cell {
   aspect-ratio: 1 / 1;
-  padding: 0.25rem;
+  padding: 0.15rem; /* Slightly reduced padding for mobile */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center; /* Ensures dates stay perfectly centered when shrinking */
   border-radius: 0.5rem;
   transition: all 0.2s;
+}
+
+/* Move flip zones to the top corners on mobile so they don't block the Notes panel */
+@media (max-width: 768px) {
+  .page-flip-zone {
+    width: 70px;
+    height: 70px;
+  }
+  .page-flip-zone.top-left {
+    top: 10px;
+    left: 10px;
+  }
+  .page-flip-zone.bottom-right {
+    bottom: auto; /* Remove from bottom */
+    top: 10px;    /* Move to top right */
+    right: 10px;
+  }
 }
 
 .day-cell.in-range {
